@@ -9,8 +9,10 @@ def test_find_element():
 
 def test_no_find_element():
     browser.open('/')
-    browser.element('[name="q"]').should(be.blank).type('___tfx_/qa').press_enter()
+    browser.element('[name="q"]').should(be.blank).type('yashaka/selene').press_enter()
     browser.element('[class="GCkZZe"]').should(have.text('Картинки'))
+
+
 
 
 
