@@ -1,24 +1,17 @@
-import pytest
+from selene import browser, be, have
 
 
-@pytest.fixture
-def login_page(browser):
-    print("Логин пейдж")
-    pass
-
-@pytest.fixture
-def user():
-    print("Юзер")
-    return "username", "password"
+def test_find_element():
+    browser.open('/')
+    browser.element('[name="q"]').should(be.blank).type('yashaka/selene').press_enter()
+    browser.element('#search').should(have.text('Selene - User-oriented Web UI browser tests in Python'))
 
 
+def test_no_find_element():
+    browser.open('/')
+    browser.element('[name="q"]').should(be.blank).type('___tfx_/qa').press_enter()
+    browser.element('[class="GCkZZe"]').should(have.text('Картинки'))
 
-def test_login(login_page, user):
-    username, password = user
-    assert username == "username"
-    assert password == "password"
 
-def test_logout(login_page, user):
-    username, password = user
-    assert username == "username"
-    assert password == "password"
+
+
